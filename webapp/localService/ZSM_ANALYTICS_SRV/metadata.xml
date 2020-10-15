@@ -1,0 +1,29 @@
+<edmx:Edmx xmlns:edmx="http://schemas.microsoft.com/ado/2007/06/edmx"
+	xmlns:m="http://schemas.microsoft.com/ado/2007/08/dataservices/metadata" xmlns:sap="http://www.sap.com/Protocols/SAPData" Version="1.0">
+	<edmx:DataServices m:DataServiceVersion="2.0">
+		<Schema xmlns="http://schemas.microsoft.com/ado/2008/09/edm" Namespace="ZSM_ANALYTICS_SRV" xml:lang="es" sap:schema-version="1">
+			<EntityType Name="TicketsAbiertos" sap:label="Tickets Abiertos" sap:content-version="1">
+				<Key><PropertyRef Name="Ticket"/></Key><Property Name="Ticket" Type="Edm.String" Nullable="false" MaxLength="10" sap:label="Ticket" sap:creatable="false" sap:updatable="false"/><Property Name="Descripcion" Type="Edm.String" Nullable="false" MaxLength="40" sap:label="Descripción" sap:creatable="false"
+					sap:updatable="false"/><Property Name="Solicitante" Type="Edm.String" Nullable="false" MaxLength="10" sap:label="Solicitante" sap:creatable="false"
+					sap:updatable="false"/><Property Name="Estado" Type="Edm.String" Nullable="false" MaxLength="30" sap:label="Estado" sap:creatable="false" sap:updatable="false"/><Property Name="Lado" Type="Edm.String" Nullable="false" MaxLength="20" sap:label="Lado" sap:creatable="false" sap:updatable="false"/><Property Name="FechaCreacion" Type="Edm.String" Nullable="false" MaxLength="8" sap:label="Fecha Creación" sap:creatable="false"
+					sap:updatable="false"/><Property Name="Tipo" Type="Edm.String" Nullable="false" MaxLength="35" sap:label="Tipo" sap:creatable="false" sap:updatable="false"/><Property Name="Modulo" Type="Edm.String" Nullable="false" MaxLength="6" sap:label="Módulo" sap:creatable="false" sap:updatable="false"/><Property Name="Prioridad" Type="Edm.String" Nullable="false" MaxLength="40" sap:label="Prioridad" sap:creatable="false"
+					sap:updatable="false"/><Property Name="Pais" Type="Edm.String" Nullable="false" MaxLength="15" sap:label="País" sap:creatable="false" sap:updatable="false"/><Property Name="RefCliente" Type="Edm.String" Nullable="false" MaxLength="35" sap:label="Ref. Cliente" sap:creatable="false"
+					sap:updatable="false"/><Property Name="FechaUltEstado" Type="Edm.String" Nullable="false" MaxLength="8" sap:label="Fecha Ult. Estado" sap:creatable="false"
+					sap:updatable="false"/><Property Name="AgingUltEstadoDias" Type="Edm.Int64" Nullable="false" sap:label="Aging Ult. Estado" sap:creatable="false"
+					sap:updatable="false"/><Property Name="AgingCreacionDias" Type="Edm.Int64" Nullable="false" sap:label="Aging Ticket" sap:creatable="false" sap:updatable="false"/><Property Name="RespCliente" Type="Edm.String" Nullable="false" MaxLength="40" sap:label="Resp. Cliente" sap:creatable="false"
+					sap:updatable="false"/><Property Name="URL" Type="Edm.String" Nullable="false" MaxLength="300" sap:label="URL" sap:creatable="false" sap:updatable="false"
+					sap:sortable="false" sap:filterable="false"/></EntityType>
+			<EntityType Name="DatosAbono" sap:label="Abono" sap:content-version="1">
+				<Key><PropertyRef Name="Solicitante"/><PropertyRef Name="Proyecto"/><PropertyRef Name="Periodo"/></Key><Property Name="Solicitante" Type="Edm.String" Nullable="false" MaxLength="10" sap:label="Solicitante" sap:creatable="false"
+					sap:updatable="false"/><Property Name="Proyecto" Type="Edm.String" Nullable="false" MaxLength="10" sap:label="Proyecto" sap:creatable="false" sap:updatable="false"/><Property Name="Periodo" Type="Edm.String" Nullable="false" MaxLength="7" sap:label="Período" sap:creatable="false" sap:updatable="false"/><Property Name="Consumido" Type="Edm.Decimal" Nullable="false" Precision="13" Scale="2" sap:label="Consumido" sap:creatable="false"
+					sap:updatable="false" sap:sortable="false" sap:filterable="false"/><Property Name="Abono" Type="Edm.Decimal" Nullable="false" Precision="13" Scale="2" sap:label="Abono" sap:creatable="false"
+					sap:updatable="false" sap:sortable="false" sap:filterable="false"/><Property Name="AbonoReal" Type="Edm.Decimal" Nullable="false" Precision="13" Scale="2" sap:label="Abono Real" sap:creatable="false"
+					sap:updatable="false" sap:sortable="false" sap:filterable="false"/><Property Name="Adelanto" Type="Edm.Decimal" Nullable="false" Precision="13" Scale="2" sap:label="Adelanto" sap:creatable="false"
+					sap:updatable="false" sap:sortable="false" sap:filterable="false"/><Property Name="Adicionales" Type="Edm.Decimal" Nullable="false" Precision="13" Scale="2" sap:label="Adicionales" sap:creatable="false"
+					sap:updatable="false" sap:sortable="false" sap:filterable="false"/><Property Name="Baseline" Type="Edm.String" Nullable="false" MaxLength="10" sap:label="Baseline" sap:creatable="false" sap:updatable="false"
+					sap:sortable="false" sap:filterable="false"/></EntityType>
+			<EntityContainer Name="ZSM_ANALYTICS_SRV_Entities" m:IsDefaultEntityContainer="true" sap:supported-formats="atom json xlsx"><EntitySet Name="TicketsAbiertosSet" EntityType="ZSM_ANALYTICS_SRV.TicketsAbiertos" sap:label="Tickets Abiertos" sap:creatable="false"
+				sap:updatable="false" sap:deletable="false" sap:searchable="true" sap:addressable="false" sap:content-version="1"/><EntitySet Name="AbonoSet" EntityType="ZSM_ANALYTICS_SRV.DatosAbono" sap:creatable="false" sap:updatable="false" sap:deletable="false"
+				sap:pageable="false" sap:addressable="false" sap:content-version="1"/></EntityContainer><atom:link xmlns:atom="http://www.w3.org/2005/Atom" rel="self" href="./sap/ZSM_ANALYTICS_SRV/$metadata"/><atom:link xmlns:atom="http://www.w3.org/2005/Atom" rel="latest-version" href="./sap/ZSM_ANALYTICS_SRV/$metadata"/></Schema>
+	</edmx:DataServices>
+</edmx:Edmx>

@@ -1,0 +1,96 @@
+<mvc:View controllerName="softtek.Abono.controller.historico" xmlns:html="http://www.w3.org/1999/xhtml" xmlns:mvc="sap.ui.core.mvc"
+	xmlns:semantic="sap.f.semantic" xmlns:layout="sap.ui.layout" xmlns:commons="sap.suite.ui.commons" xmlns:viz="sap.viz.ui5.controls"
+	xmlns:viz.data="sap.viz.ui5.data" xmlns:core="sap.ui.core" xmlns:viz.feeds="sap.viz.ui5.controls.common.feeds" displayBlock="true"
+	xmlns="sap.m" height="100%" showNavButton="false" navButtonPress="onNavBack">
+	<commons:ChartContainer id="Cont1" title="" showZoom="false" showFullScreen="false" showPersonalization="false" autoAdjustHeight="true"
+		fullScreen="true" contentChange="cambio">
+		<!--<toolbar id="toolbar2" active="true" design="Info" height="2rem" press="onToolbarPress" ariaLabelledBy="myText">-->
+		<!--<core:Icon src="sap-icon://undo" width="2rem" press="onIconPress"/>-->
+		<commons:ChartContainerContent icon="sap-icon://line-chart" title="Grafico">
+			<commons:content>
+				<viz:VizFrame id="barTickets" vizType="stacked_combination" height='100%' width="100%" selectData="onSelect"
+					vizProperties="{ valueAxis: { title: { visible: false } }, plotArea: { dataLabel : { visible: true, showTotal: true }, dataShape: { primaryAxis: ['line', 'bar', 'bar'] } }, title: { visible : false }, interaction : { selectability : { mode : 'single' }} }">
+					<viz:dataset>
+						<viz.data:FlattenedDataset data="{/HistoricoReal}">
+							<viz.data:dimensions>
+								<viz.data:DimensionDefinition name="Mes" value="{id}"/>
+							</viz.data:dimensions>
+							<viz.data:measures>
+								<viz.data:MeasureDefinition name="Abono Real" value="{h1}"/>
+								<viz.data:MeasureDefinition name="Imp. Excedente" value="{h2}"/>
+								<viz.data:MeasureDefinition name="Imp. Consumida" value="{h3}"/>
+							</viz.data:measures>
+						</viz.data:FlattenedDataset>
+					</viz:dataset>
+					<viz:feeds>
+						<viz.feeds:FeedItem uid="valueAxis" type="Measure" values="Abono Real"/>
+						<viz.feeds:FeedItem uid="valueAxis" type="Measure" values="Imp. Excedente"/>
+						<viz.feeds:FeedItem uid="valueAxis" type="Measure" values="Imp. Consumida"/>
+						<viz.feeds:FeedItem uid="categoryAxis" type="Dimension" values="Mes"/>
+					</viz:feeds>
+				</viz:VizFrame>
+			</commons:content>
+		</commons:ChartContainerContent>
+		<commons:ChartContainerContent title="Tabla" icon="sap-icon://table-view">
+			<commons:content>
+				<ScrollContainer height="100%" width="100%" horizontal="false" vertical="true">
+					<Table id="Table" growing="true" growingThreshold="100" growingScrollToLoad="true" updateFinished="cargarAbono" itemPress="navToTicket"
+						items="{Tickets>/TicketsSet}">
+						<!--items="{ path : 'Tickets>/TicketsSet' }" >-->
+						<columns>
+							<Column id="col_ticket" width="10%">
+								<header>
+									<Text text="{i18n>ticket}" id="text_ticket"/>
+								</header>
+							</Column>
+							<Column id="col_descr" width="35%" minScreenWidth="Large" demandPopin="true">
+								<Text text="{i18n>descripcion}" id="text_descr"/>
+							</Column>
+							<Column id="col_periodo" width="10%">
+								<Text text="{i18n>periodo}" id="text_periodo"/>
+							</Column>
+							<Column id="col_hs_peri" width="10%" >
+								<Text text="{i18n>hs_peri}" id="text_hs_peri"/>
+							</Column>
+							<Column id="col_hs_tot" width="10%">
+								<Text text="{i18n>hs_tot}" id="text_hs_tot"/>
+							</Column>
+							<Column id="col_modulo" width="5%" minScreenWidth="Tablet" demandPopin="true" >
+								<Text text="{i18n>modulo}" id="text_modulo" wrapping="false"/>
+							</Column>
+							<Column id="col_categoria" width="20%" minScreenWidth="Tablet" demandPopin="true" >
+								<Text text="{i18n>categoria}" id="text_categoria"/>
+							</Column>
+						</columns>
+						<items>
+							<!--<ColumnListItem type="Navigation">-->
+							<ColumnListItem>
+								<cells>
+									<!--<Link text="{Tickets>ticket}" href="{Tickets>url}" target="_blank" emphasized="false"/>-->
+									<ObjectIdentifier title="{Tickets>ticket}" titleActive="true" titlePress="navToTicket"/>
+									<ObjectIdentifier title="{Tickets>descripcion}"/>
+									<ObjectIdentifier title="{parts:[{path: 'Tickets>periodo'}], formatter: '.formatter.periodo'}"/>
+									<ObjectIdentifier title="{Tickets>hsPeriodo}"/>
+									<ObjectIdentifier title="{Tickets>hsTotal}"/>
+									<ObjectIdentifier title="{Tickets>modulo}"/>
+									<ObjectIdentifier title="{Tickets>categoria}"/>
+								</cells>
+							</ColumnListItem>
+						</items>
+					</Table>
+				</ScrollContainer>
+			</commons:content>
+		</commons:ChartContainerContent>
+		<commons:customIcons>
+			<core:Icon id="excelIcon" src="sap-icon://excel-attachment" tooltip="Descarga Excel" press="download" visible="false" width="2em"></core:Icon>
+			<core:Icon id="customIcon" src="sap-icon://filter" tooltip="Filtros" press="filtrar" width="2em"></core:Icon>
+		</commons:customIcons>
+		<commons:toolbar>
+			<OverflowToolbar id="toolbar" active="true" design="Auto" height="2rem" press="onToolbarPress" ariaLabelledBy="myText">
+				<Text id="myText" text="Click en el período para más detalle."/>
+				<ToolbarSpacer/>
+				<commons:ChartContainerToolbarPlaceholder></commons:ChartContainerToolbarPlaceholder>
+			</OverflowToolbar>
+		</commons:toolbar>
+	</commons:ChartContainer>
+</mvc:View>

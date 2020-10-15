@@ -1,0 +1,21 @@
+<edmx:Edmx xmlns:edmx="http://schemas.microsoft.com/ado/2007/06/edmx"
+	xmlns:m="http://schemas.microsoft.com/ado/2007/08/dataservices/metadata" xmlns:sap="http://www.sap.com/Protocols/SAPData" Version="1.0">
+	<edmx:DataServices m:DataServiceVersion="2.0">
+		<Schema xmlns="http://schemas.microsoft.com/ado/2008/09/edm" Namespace="ZSM_TICKET_HIST_SRV" xml:lang="es" sap:schema-version="1">
+			<EntityType Name="Tickets" sap:content-version="1">
+				<Key><PropertyRef Name="ticket"/></Key><Property Name="ticket" Type="Edm.String" Nullable="false" MaxLength="10" sap:label="Núm.operación" sap:creatable="false"
+					sap:updatable="false" sap:sortable="false" sap:filterable="false"/><Property Name="descripcion" Type="Edm.String" Nullable="false" MaxLength="40" sap:label="Descripción" sap:creatable="false"
+					sap:updatable="false" sap:sortable="false" sap:filterable="false"/><Property Name="periodo" Type="Edm.String" Nullable="false" MaxLength="6" sap:creatable="false" sap:updatable="false" sap:sortable="false"
+					sap:filterable="false"/><Property Name="fecha" Type="Edm.DateTime" Nullable="false" Precision="8" sap:label="Fe.contabiliz." sap:creatable="false"
+					sap:updatable="false" sap:sortable="false" sap:filterable="false"/><Property Name="hsPeriodo" Type="Edm.Decimal" Nullable="false" Precision="10" Scale="2" sap:label="Cant. Hs." sap:creatable="false"
+					sap:updatable="false" sap:sortable="false" sap:filterable="false"/><Property Name="hsTotal" Type="Edm.Decimal" Nullable="false" Precision="10" Scale="2" sap:label="Cant. Hs." sap:creatable="false"
+					sap:updatable="false" sap:sortable="false" sap:filterable="false"/><Property Name="modulo" Type="Edm.String" Nullable="false" MaxLength="5" sap:label="Módulo" sap:creatable="false" sap:updatable="false"
+					sap:sortable="false"/><Property Name="categoria" Type="Edm.String" Nullable="false" MaxLength="35" sap:label="Categoría Aux." sap:creatable="false"
+					sap:updatable="false" sap:sortable="false"/><Property Name="respCliente" Type="Edm.String" Nullable="false" MaxLength="35" sap:label="ID Ref. Cliente" sap:creatable="false"
+					sap:updatable="false" sap:sortable="false"/><Property Name="url" Type="Edm.String" Nullable="false" sap:creatable="false" sap:updatable="false" sap:sortable="false"
+					sap:filterable="false"/><Property Name="fechaFiltro" Type="Edm.DateTime" Precision="8" sap:label="Fecha" sap:creatable="false" sap:updatable="false"
+					sap:sortable="false"/></EntityType>
+			<EntityContainer Name="ZSM_TICKET_HIST_SRV_Entities" m:IsDefaultEntityContainer="true" sap:supported-formats="atom json xlsx"><EntitySet Name="TicketsSet" EntityType="ZSM_TICKET_HIST_SRV.Tickets" sap:creatable="false" sap:updatable="false" sap:deletable="false"
+				sap:pageable="false" sap:addressable="false" sap:content-version="1"/></EntityContainer><atom:link xmlns:atom="http://www.w3.org/2005/Atom" rel="self" href="./sap/ZSM_TICKET_HIST_SRV/$metadata"/><atom:link xmlns:atom="http://www.w3.org/2005/Atom" rel="latest-version" href="./sap/ZSM_TICKET_HIST_SRV/$metadata"/></Schema>
+	</edmx:DataServices>
+</edmx:Edmx>

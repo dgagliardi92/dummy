@@ -1,0 +1,7 @@
+<core:FragmentDefinition xmlns="sap.m" List="sap.ui.core.ListItem" xmlns:l="sap.ui.layout" xmlns:core="sap.ui.core"
+	xmlns:f="sap.ui.layout.form">
+	<SelectDialog noDataText="Sin datos"  id="SoliciDialogFragment" title="Seleccione un solicitante" search="handleSearch" confirm="handleConfirm" cancel="handleClose"
+		items="{ path: 'matchcode>/matchcodeSet', filters: [{path: 'campo', operator: 'EQ', value1: 'solicitante'}] }">
+		<StandardListItem title="{matchcode>codigo}" description="{matchcode>descripcion}" iconDensityAware="false" iconInset="false" type="Active"/>
+	</SelectDialog>
+</core:FragmentDefinition>
